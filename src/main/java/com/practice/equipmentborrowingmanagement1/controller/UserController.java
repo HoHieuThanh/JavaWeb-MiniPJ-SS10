@@ -2,6 +2,7 @@ package com.practice.equipmentborrowingmanagement1.controller;
 
 import com.practice.equipmentborrowingmanagement1.customException.EmailException;
 import com.practice.equipmentborrowingmanagement1.customException.InvalidCredentialsException;
+import com.practice.equipmentborrowingmanagement1.model.dto.UserRequest;
 import com.practice.equipmentborrowingmanagement1.model.entity.Role;
 import com.practice.equipmentborrowingmanagement1.model.entity.User;
 import com.practice.equipmentborrowingmanagement1.service.UserService;
@@ -25,13 +26,13 @@ public class UserController {
 
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new UserRequest());
         return "auth/register";
     }
 
     @PostMapping("/register")
     public String register(
-            @Valid @ModelAttribute("user") User user,
+            @Valid @ModelAttribute("user") UserRequest user,
             BindingResult result
     ){
         if (result.hasErrors()){
@@ -65,7 +66,7 @@ public class UserController {
             session.setAttribute("userLogin", u);
 
             if (u.getRole() == Role.ADMIN){
-                return "redirect:/admin";
+                return "redirect:/admin/inventory";
             }
             if (u.getRole() == Role.STUDENT) {
                 return "redirect:/student";

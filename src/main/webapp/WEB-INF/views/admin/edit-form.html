@@ -15,21 +15,18 @@
 <body>
     <div layout:fragment="content" class="container mt-4">
         <div class="container" style="max-width: 600px;">
-                <h2 th:text="${equipment.id == 0 ? 'Thêm mới thiết bị' : 'Cập nhật thiết bị'}"></h2>
-
                 <form th:action="@{/admin/save}" th:object="${equipment}" method="post" class="mt-4">
-                    <input type="hidden" th:field="*{id}">
                     <div class="form-group">
                         <label>Tên thiết bị:</label>
-                        <input type="text" th:field="*{name}" class="form-control" required>
+                        <input type="text" th:field="*{name}" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Loại (Type):</label>
-                        <input type="text" th:field="*{type}" class="form-control" required>
+                        <input type="text" th:field="*{type}" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Số lượng tồn kho:</label>
-                        <input type="number" th:field="*{stock}" class="form-control" required>
+                        <input type="number" th:field="*{stock}" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-primary">Lưu lại</button>
                     <a th:href="@{/admin/inventory}" class="btn btn-secondary">Hủy bỏ</a>

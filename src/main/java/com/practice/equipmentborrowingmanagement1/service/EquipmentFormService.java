@@ -9,6 +9,8 @@ import com.practice.equipmentborrowingmanagement1.repository.EquipmentRepository
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EquipmentFormService {
 
@@ -17,6 +19,10 @@ public class EquipmentFormService {
 
     @Autowired
     private EquipmentFormRepository equipmentFormRepository;
+
+    public List<EquipmentForm> getEquipmentForms() {
+        return equipmentFormRepository.findAll();
+    }
 
     public void processBorrow(EquipmentFormRequest form) {
 

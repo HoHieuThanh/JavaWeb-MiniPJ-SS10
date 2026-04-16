@@ -1,5 +1,6 @@
 package com.practice.equipmentborrowingmanagement1.config;
 
+import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +32,8 @@ public class WebConfig implements WebMvcConfigurer {
     public SpringTemplateEngine springTemplateEngine() {
         SpringTemplateEngine springTemplateEngine = new SpringTemplateEngine();
         springTemplateEngine.setTemplateResolver(springResourceTemplateResolver());
+        // QUAN TRỌNG: Thêm dòng này để kích hoạt tính năng Layout
+        springTemplateEngine.addDialect(new LayoutDialect());
         return springTemplateEngine;
     }
 
